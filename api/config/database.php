@@ -11,13 +11,13 @@ class Database {
 
 
     private $host = "localhost";
-    private $db_name = "api_db";
+    private $db_name = "poi_open_street";
     private $username = "root";
-    private $password = "";
+    private $password = "123456";
     public $conn;
 
     // get the database connection
-    public function getConnection() {
+    public function getConnection() : PDO{
 
         $this->conn = null;
 
