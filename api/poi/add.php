@@ -26,8 +26,22 @@ if (
         !empty($data->lng)
 ) {
 
+    if (empty($poi->validateLongitude($data->lng))) {
+        http_response_code(400);
+        echo json_encode(array("message" => "Nieprawidłowa długość geograficzna"));
+        die();
+    }
+
+    error_log("VAL " . $poi->validateLatitude($data->lat));
+    if (empty($poi->validateLatitude($data->lat))) {
+        http_response_code(400);
+        echo json_encode(array("message" => "Nieprawidłowa szerokość geograficzna"));
+        die();
+    }
+
     $poi = $poi->setLat($data->lat)->setLng($data->lng)->setName($data->name)->setIsActive(1);
 
+    //generuj dane adresowe 
     $poi->generateAddressFromOpenStreet();
 
     if ($poi->add()) {

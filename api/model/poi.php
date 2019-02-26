@@ -67,7 +67,10 @@ class Poi {
 
         return false;
     }
-
+    
+    /**
+     * Generuj dane adresowe za pomoca api openstreetmap
+     */
     public function generateAddressFromOpenStreet() {
 
         if (!empty($this->getLat()) && !empty($this->getLng())) {
@@ -168,6 +171,14 @@ class Poi {
     public function setStreetNumber($street_number) {
         $this->street_number = $street_number;
         return $this;
+    }
+
+    public function validateLongitude($lng) {
+        return preg_match('/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/', $lng);
+    }
+
+    public function validateLatitude($lat) {
+        return preg_match('/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/', $lat);
     }
 
 }
