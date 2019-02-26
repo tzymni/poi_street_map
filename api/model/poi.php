@@ -11,6 +11,7 @@ class Poi {
 
     private $conn;
     private $table_name = "poi";
+    public $id;
     public $name;
     public $lat;
     public $lng;
@@ -30,6 +31,7 @@ class Poi {
                  p.id, p.name, p.lat, p.lng, p.city, p.country_code, p.street, p.street_number
             FROM
                 " . $this->table_name . " p
+                    WHERE p.is_active = 1
             ORDER BY
                 p.id DESC";
 
@@ -38,6 +40,21 @@ class Poi {
         $stmt->execute();
 
         return $stmt;
+    }
+
+    public function delete() {
+
+        $query = "UPDATE " . $this->table_name . " set is_active = 0 WHERE id = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->getId());
+
+        // execute query
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function add() {
@@ -67,7 +84,7 @@ class Poi {
 
         return false;
     }
-    
+
     /**
      * Generuj dane adresowe za pomoca api openstreetmap
      */
@@ -170,6 +187,15 @@ class Poi {
 
     public function setStreetNumber($street_number) {
         $this->street_number = $street_number;
+        return $this;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
         return $this;
     }
 
