@@ -12,23 +12,10 @@ CREATE TABLE `poi` (
   `is_active` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Indeksy dla zrzutów tabel
---
 
---
--- Indexes for table `poi`
---
 ALTER TABLE `poi`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT dla tabeli `poi`
---
 ALTER TABLE `poi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
