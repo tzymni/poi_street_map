@@ -17,7 +17,7 @@ class Database {
     public $conn;
 
     // get the database connection
-    public function getConnection() : PDO{
+    public function getConnection() {
 
         $this->conn = null;
 

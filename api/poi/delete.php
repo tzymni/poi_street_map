@@ -25,13 +25,13 @@ if ($id > 0) {
     if ($poi->delete()) {
 
         http_response_code(200);
-        echo json_encode(array("message" => "POI zostało usunięte."));
+        echo json_encode(array("message" => "POI deleted."));
     } else {
 
         http_response_code(503);
-        echo json_encode(array("message" => "Nie udało się usunąć POI."));
+        echo json_encode(array("message" => "Cant delete POI."));
     }
 } else {
     http_response_code(400);
-    echo json_encode(array("message" => "Potrzebne id."));
+    echo json_encode(array("message" => "ID its required."));
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of cUrl
+ * 
  *
  * @author tzymni
  */
@@ -20,10 +20,10 @@ class CUrl {
     }
 
     public function curlRun($url) {
-        
+
         $userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2';
-curl_setopt( $this->curl, CURLOPT_USERAGENT, $userAgent );
-//curl_setopt($this->curl, CURLOPT_REFERER, 'http://localhost/poi_adder/api/poi/add.php');
+        curl_setopt($this->curl, CURLOPT_USERAGENT, $userAgent);
+
         // Return Page contents.
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
         //grab URL and pass it to the variable.

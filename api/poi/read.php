@@ -55,6 +55,6 @@ if ($num_poi > 0) {
     http_response_code(404);
 
     echo json_encode(
-            array("message" => "Brak POI.")
+            array("message" => "No POI.")
     );
 }

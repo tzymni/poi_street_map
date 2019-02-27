@@ -86,7 +86,7 @@ class Poi {
     }
 
     /**
-     * Generuj dane adresowe za pomoca api openstreetmap
+     * generate address data by api openstreetmap
      */
     public function generateAddressFromOpenStreet() {
 

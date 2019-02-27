@@ -28,32 +28,32 @@ if (
 
     if (empty($poi->validateLongitude($data->lng))) {
         http_response_code(400);
-        echo json_encode(array("message" => "Nieprawidłowa długość geograficzna"));
+        echo json_encode(array("message" => "Wrong longitude"));
         die();
     }
 
     if (empty($poi->validateLatitude($data->lat))) {
         http_response_code(400);
-        echo json_encode(array("message" => "Nieprawidłowa szerokość geograficzna"));
+        echo json_encode(array("message" => "Wrong latitude"));
         die();
     }
 
     $poi = $poi->setLat($data->lat)->setLng($data->lng)->setName($data->name)->setIsActive(1);
 
-    //generuj dane adresowe 
+    //generate address data 
     $poi->generateAddressFromOpenStreet();
 
     if ($poi->add()) {
 
         http_response_code(201);
-        echo json_encode(array("message" => "POI zostało utworzone."));
+        echo json_encode(array("message" => "POI created."));
     } else {
 
         http_response_code(503);
-        echo json_encode(array("message" => "Coś poszło nie tak, POI nie zostało utworzone"));
+        echo json_encode(array("message" => "Error, POI cannot be create"));
     }
 } else {
 
     http_response_code(400);
-    echo json_encode(array("message" => "Brak wymaganych danych do utworzenia POI"));
+    echo json_encode(array("message" => "All required data is needed"));
 }
