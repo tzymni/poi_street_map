@@ -13,7 +13,7 @@ class Database {
     private $host = "localhost";
     private $db_name = "poi_open_street";
     private $username = "root";
-    private $password = "123456";
+    private $password = "";
     public $conn;
 
     // get the database connection
